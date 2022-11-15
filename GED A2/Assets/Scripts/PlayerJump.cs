@@ -19,6 +19,7 @@ public class PlayerJump : MonoBehaviour
         {
             gameObject.GetComponent<Rigidbody>().velocity = new Vector2(0, 8);
             canJump = false;
+            WinCondition.instance.UpdateScore(1);
         }
     }
 
