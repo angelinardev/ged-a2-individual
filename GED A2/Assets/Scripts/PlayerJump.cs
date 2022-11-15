@@ -5,6 +5,9 @@ using UnityEngine;
 public class PlayerJump : MonoBehaviour
 {
     public bool canJump = false;
+
+    public Material grounded;
+    public Material areial;
     private void Update() {
         if(Input.GetKeyDown(KeyCode.Space))
         {
@@ -20,6 +23,7 @@ public class PlayerJump : MonoBehaviour
             gameObject.GetComponent<Rigidbody>().velocity = new Vector2(0, 8);
             canJump = false;
             WinCondition.instance.UpdateScore(1);
+            gameObject.GetComponent<MeshRenderer>().material = areial;
         }
     }
 
@@ -27,6 +31,7 @@ public class PlayerJump : MonoBehaviour
         if(other.gameObject.tag == "Ground")
         {
             canJump = true;
+            gameObject.GetComponent<MeshRenderer>().material = grounded;
         }
     }
 }
